@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Bus Ticket Booking</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#f4f4f4;
+    }
+
+    /* Header */
+
+    header{
+      background:#0d6efd;
+      color:white;
+      padding:20px;
+      text-align:center;
+      font-size:28px;
+      font-weight:bold;
+    }
+
+    /* Booking Section */
+
+    .booking-container{
+      width:90%;
+      max-width:1000px;
+      margin:40px auto;
+      background:white;
+      padding:40px;
+      border-radius:10px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .booking-container h2{
+      text-align:center;
+      margin-bottom:30px;
+      color:#0d6efd;
+    }
+
+    form{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+
+    .form-group{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .form-group label{
+      margin-bottom:8px;
+      font-weight:bold;
+    }
+
+    .form-group input,
+    .form-group select{
+      padding:12px;
+      border:1px solid #ccc;
+      border-radius:5px;
+      font-size:16px;
+    }
+
+    /* Seat Layout */
+
+    .seat-section{
+      margin-top:40px;
+    }
+
+    .seat-section h3{
+      margin-bottom:20px;
+      color:#333;
+      text-align:center;
+    }
+
+    .bus-layout{
+      display:grid;
+      grid-template-columns:repeat(4,70px);
+      gap:15px;
+      justify-content:center;
+    }
+
+    .seat{
+      width:70px;
+      height:70px;
+      background:#0d6efd;
+      color:white;
+      border-radius:10px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      cursor:pointer;
+      transition:0.3s;
+      font-weight:bold;
+    }
+
+    .seat:hover{
+      background:#084298;
+    }
+
+    .seat.selected{
+      background:#28a745;
+    }
+
+    .seat.booked{
+      background:#999;
+      cursor:not-allowed;
+    }
+
+    /* Price Box */
+
+    .price-box{
+      margin-top:30px;
+      text-align:center;
+    }
+
+    .price-box h3{
+      margin-bottom:15px;
+    }
+
+    /* Button */
+
+    .book-btn{
+      margin-top:30px;
+      width:100%;
+      padding:15px;
+      background:#ff9800;
+      color:white;
+      border:none;
+      border-radius:5px;
+      font-size:18px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .book-btn:hover{
+      background:#e68900;
+    }
+
+    /* Footer */
+
+    footer{
+      margin-top:40px;
+      background:#222;
+      color:white;
+      text-align:center;
+      padding:20px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+
+  <header>
+    FastBus Ticket Booking
+  </header>
+
+  <!-- Booking Container -->
+
+  <div class="booking-container">
+
+    <h2>Book Your Ticket</h2>
+
+    <form>
+
+      <div class="form-group">
+        <label>Passenger Name</label>
+        <input type="text" placeholder="Enter your name">
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="Enter phone number">
+      </div>
+
+      <div class="form-group">
+        <label>From</label>
+        <input type="text" placeholder="Departure city">
+      </div>
+
+      <div class="form-group">
+        <label>To</label>
+        <input type="text" placeholder="Destination city">
+      </div>
+
+      <div class="form-group">
+        <label>Travel Date</label>
+        <input type="date">
+      </div>
+
+      <div class="form-group">
+        <label>Bus Type</label>
+        <select>
+          <option>AC Sleeper</option>
+          <option>Non AC</option>
+          <option>Luxury Coach</option>
+        </select>
+      </div>
+
+    </form>
+
+    <!-- Seat Selection -->
+
+    <div class="seat-section">
+
+      <h3>Select Your Seat</h3>
+
+      <div class="bus-layout">
+
+        <div class="seat">1</div>
+        <div class="seat">2</div>
+        <div class="seat booked">3</div>
+        <div class="seat">4</div>
+
+        <div class="seat">5</div>
+        <div class="seat">6</div>
+        <div class="seat booked">7</div>
+        <div class="seat">8</div>
+
+        <div class="seat">9</div>
+        <div class="seat">10</div>
+        <div class="seat">11</div>
+        <div class="seat booked">12</div>
+
+      </div>
+
+    </div>
+
+    <!-- Price -->
+
+    <div class="price-box">
+
+      <h3>Total Fare: ₹850</h3>
+
+    </div>
+
+    <!-- Button -->
+
+    <button class="book-btn">
+      Confirm Booking
+    </button>
+
+  </div>
+
+  <!-- Footer -->
+
+  <footer>
+
+    © 2026 FastBus Transport Services
+
+  </footer>
+
+  <!-- JavaScript -->
+
+  <script>
+
+    const seats = document.querySelectorAll('.seat:not(.booked)');
+
+    seats.forEach(seat => {
+
+      seat.addEventListener('click', () => {
+
+        seat.classList.toggle('selected');
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
